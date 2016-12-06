@@ -4,6 +4,10 @@ description: >
   OpenStack Neutron base service. Shared for all Neutron agents.
 
 parameters:
+  AaaMode:
+    description: AAA mode setting
+    type: string
+    default: 'no_auth'
   RabbitPassword:
     description: The password for RabbitMQ
     type: string
@@ -81,6 +85,7 @@ outputs:
     value:
       service_name: neutron_base
       config_settings:
+        contrail::aaa_mode: {get_param: AaaMode}
         neutron::rabbit_password: {get_param: RabbitPassword}
         neutron::rabbit_user: {get_param: RabbitUserName}
         neutron::rabbit_use_ssl: {get_param: RabbitClientUseSSL}
