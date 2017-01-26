@@ -11,7 +11,6 @@ resource_registry:
 
   # Port assignments for the controller role
   OS::TripleO::Controller::Ports::ManagementPort: ../network/ports/management.yaml
-  OS::TripleO::ContrailController::Ports::ManagementPort: ../network/ports/management.yaml
 
   # Port assignments for the compute role
   OS::TripleO::Compute::Ports::ManagementPort: ../network/ports/management.yaml
