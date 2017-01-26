@@ -2,11 +2,11 @@
 # # extensions, configured via puppet
 resource_registry:
 #  needed for ssl:
-#  OS::TripleO::ComputeExtraConfigPre: ../puppet/extraconfig/pre_deploy/contrail/contrail-tls.yaml
-#  OS::TripleO::ContrailControllerExtraConfigPre: ../puppet/extraconfig/pre_deploy/contrail/contrail-tls.yaml
-#  OS::TripleO::ContrailAnalyticsExtraConfigPre: ../puppet/extraconfig/pre_deploy/contrail/contrail-tls.yaml
-#  OS::TripleO::ContrailAnalyticsDatabaseExtraConfigPre: ../puppet/extraconfig/pre_deploy/contrail/contrail-tls.yaml
-#  OS::TripleO::ContrailTsnExtraConfigPre: ../puppet/extraconfig/pre_deploy/contrail/contrail-tls.yaml
+#  OS::TripleO::ComputeExtraConfigPre: ../../puppet/extraconfig/pre_deploy/contrail/contrail-tls.yaml
+#  OS::TripleO::ContrailControllerExtraConfigPre: ../../puppet/extraconfig/pre_deploy/contrail/contrail-tls.yaml
+#  OS::TripleO::ContrailAnalyticsExtraConfigPre: ../../puppet/extraconfig/pre_deploy/contrail/contrail-tls.yaml
+#  OS::TripleO::ContrailAnalyticsDatabaseExtraConfigPre: ../../puppet/extraconfig/pre_deploy/contrail/contrail-tls.yaml
+#  OS::TripleO::ContrailTsnExtraConfigPre: ../../puppet/extraconfig/pre_deploy/contrail/contrail-tls.yaml
   OS::TripleO::Services::NeutronDhcpAgent: OS::Heat::None
   OS::TripleO::Services::NeutronL3Agent: OS::Heat::None
   OS::TripleO::Services::NeutronMetadataAgent: OS::Heat::None
@@ -16,6 +16,7 @@ resource_registry:
   OS::TripleO::Services::NeutronCorePlugin: OS::TripleO::Services::NeutronCorePluginContrail
   OS::TripleO::Services::ComputeNeutronCorePlugin: OS::TripleO::Services::ComputeNeutronCorePluginContrail
   OS::TripleO::NodeUserData: ../../firstboot/install_vrouter_kmod.yaml
+  OS::TripleO::Services::ContrailHeat: ../../puppet/services/network/contrail-heat.yaml
 parameter_defaults:
   ContrailRepo: http://192.0.2.1/contrail-3.2.0.0-19
   EnablePackageInstall: true
