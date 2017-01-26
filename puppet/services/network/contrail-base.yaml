@@ -66,14 +66,6 @@ parameters:
     default: 'http'
     description: Keystone authentication protocol
     type: string
-  CaFile:
-    default: 'overcloud_ca.pem'
-    description: ca file name
-    type: string
-  CertFile:
-    default: 'overcloud.pem'
-    description: cert file name
-    type: string
   ContrailAuth:
     default: 'keystone'
     description: Keystone authentication method
@@ -85,10 +77,6 @@ parameters:
   ContrailMemcachedServer:
     default: '127.0.0.1:12111'
     description: Memcached server
-    type: string
-  KeyFile:
-    default: 'overcloud.key'
-    description: private key file name
     type: string
   RabbitPassword:
     description: The password for RabbitMQ
@@ -102,10 +90,6 @@ parameters:
     default: 5672
     description: Set rabbit subscriber port, change this if using SSL
     type: number
-  SSLCertRootDir:
-    default: '/etc/contrail/ssl'
-    description: Root path of ssl files
-    type: string
 
 outputs:
   role_data:
@@ -127,23 +111,8 @@ outputs:
         contrail::auth_port_ssl_public: {get_param: AuthPortSSLPublic }
         contrail::auth_protocol: {get_param: AuthProtocol }
         contrail::api_port: {get_param: [EndpointMap, ContrailConfigInternal, port] }
-        contrail::ca_file:
-          list_join:
-            - '/'
-            - - {get_param: SSLCertRootDir}
-              - {get_param: CaFile}
-        contrail::cert_file:
-          list_join:
-            - '/'
-            - - {get_param: SSLCertRootDir}
-              - {get_param: CertFile}
         contrail::disc_server_port: {get_param: [EndpointMap, ContrailDiscoveryInternal, port] }
         contrail::insecure: {get_param: ContrailInsecure}
-        contrail::key_file:
-          list_join:
-            - '/'
-            - - {get_param: SSLCertRootDir}
-              - {get_param: KeyFile}
         contrail::memcached_server: {get_param: ContrailMemcachedServer}
         contrail::rabbit_password: {get_param: RabbitPassword}
         contrail::rabbit_user: {get_param: RabbitUserName}
